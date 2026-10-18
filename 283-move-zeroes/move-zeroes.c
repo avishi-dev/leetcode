@@ -6,16 +6,28 @@ void swap (int *x, int *y){
 }
 
 void moveZeroes(int* nums, int numsSize) {
-    for (int i=0; i<numsSize; i++){
-        if (nums[i]==0){
-            int j=i+1;
-            while (j<numsSize && nums[j]==0){
-                j++;
-            }
-            if (j<numsSize){
-                swap (&nums[i], &nums[j]);
-            }
+    int *p1 = nums;
+    int *p2 = nums;
+    while (p1< nums+numsSize && p2< nums+numsSize ){
+        while (p1<nums+numsSize && *p1!=0){
+            p1++;
         }
 
+        if (p1 == nums + numsSize) {
+            break;
+        }
+
+        p2=p1+1;
+
+        while (p2<nums+numsSize && *p2==0){
+            p2++;
+        }
+
+        if (p2 == nums + numsSize) {
+            break;
+        }
+
+        swap(p1,p2);
+        p1++;
     }
 }

@@ -1,8 +1,9 @@
-#include <stdbool.h>
+
 #include <stdlib.h>
 
 // Comparator function for qsort
 int compare(const void *a, const void *b) {
+
     int x = *(const int *)a;
     int y = *(const int *)b;
 

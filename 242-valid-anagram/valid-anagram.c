@@ -11,12 +11,9 @@ bool isAnagram(char* s, char* t) {
     }
     for (int i=0; i<m; i++){
         int index= t[i]-'a';
-        bool state=false;
         if (hash[index]){
-            state=true;
             hash[index]--;
-        }
-        if (!state){
+        }else{
             return false;
         }
     }

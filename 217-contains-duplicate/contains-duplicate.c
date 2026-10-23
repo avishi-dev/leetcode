@@ -9,10 +9,8 @@ bool containsDuplicate(int* nums, int numsSize) {
     struct node* hash[SIZE]={NULL};
 
     for (int i=0; i<numsSize; i++){
-        int index= nums[i] % SIZE;
-        if (index<0){
-            index= -index;
-        }
+        int index = ((nums[i] % SIZE) + SIZE) % SIZE;
+        
         struct node* curr= hash[index];
 
         while (curr!=NULL){

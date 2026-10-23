@@ -1,28 +1,34 @@
+#define SIZE 20000
 
-#include <stdlib.h>
-
-// Comparator function for qsort
-int compare(const void *a, const void *b) {
-
-    int x = *(const int *)a;
-    int y = *(const int *)b;
-
-    if (x < y) return -1;
-    if (x > y) return 1;
-    return 0;
-}
+struct node{
+    int value;
+    struct node* next;
+};
 
 bool containsDuplicate(int* nums, int numsSize) {
+    struct node* hash[SIZE]={NULL};
 
-    // Sort the array
-    qsort(nums, numsSize, sizeof(int), compare);
-
-    // Check adjacent elements
-    for (int i = 0; i < numsSize - 1; i++) {
-        if (nums[i] == nums[i + 1]) {
-            return true;
+    for (int i=0; i<numsSize; i++){
+        int index= nums[i] % SIZE;
+        if (index<0){
+            index= -index;
         }
-    }
+        struct node* curr= hash[index];
 
+        while (curr!=NULL){
+            if (curr->value==nums[i]){
+                return true;
+            }
+            curr=curr->next;
+        }
+
+        struct node* newnode;
+        newnode=malloc(sizeof(struct node));
+
+        newnode->value=nums[i];
+
+        newnode->next=hash[index];
+        hash[index]=newnode;
+    }
     return false;
 }

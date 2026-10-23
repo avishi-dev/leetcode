@@ -6,11 +6,11 @@ bool isAnagram(char* s, char* t) {
         return false;
     }
     for (int i=0; i< n; i++){
-        int index = s[i] - 97;
+        int index = s[i] - 'a';
         hash[index]++;
     }
     for (int i=0; i<m; i++){
-        int index= t[i]-97;
+        int index= t[i]-'a';
         bool state=false;
         if (hash[index]){
             state=true;

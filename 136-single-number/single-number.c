@@ -40,5 +40,5 @@ int singleNumber(int* nums, int numsSize) {
             curr=curr->next;
         }
     }
-    return 0;
+    return -1;
 }

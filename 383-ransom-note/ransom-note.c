@@ -8,10 +8,10 @@ bool canConstruct(char* ransomNote, char* magazine) {
     }
     for (int i=0; i<r; i++){
         int index = ransomNote[i]-97;
-        if (!hash[index]){
-            return false;
-        }else{
+        if (hash[index]){
             hash[index]--;
+        }else{
+            return false;
         }
     }
     return true;
